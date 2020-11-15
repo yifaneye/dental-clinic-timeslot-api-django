@@ -25,7 +25,7 @@ SECRET_KEY = 'pojv$_#jn0vsfdar1@xz@yjxo9e0p8g=or4aha7r!1t7^gxw@8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
