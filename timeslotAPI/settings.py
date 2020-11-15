@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'timeslot.apps.TimeslotConfig',
+    'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
