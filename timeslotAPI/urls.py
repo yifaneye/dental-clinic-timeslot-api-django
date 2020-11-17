@@ -25,5 +25,5 @@ router.register(r'timeslot', timeslot.views.TimeslotViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    path('v1/', include(router.urls)),
 ]
