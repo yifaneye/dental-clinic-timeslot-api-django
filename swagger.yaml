@@ -1,0 +1,161 @@
+swagger: '2.0'
+info:
+  title: ''
+  version: ''
+paths:
+  /v1/timeslot/:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - description: dentist
+          in: query
+          name: dentist
+          required: false
+          type: string
+        - description: startTime
+          in: query
+          name: startTime
+          required: false
+          type: string
+        - description: date
+          in: query
+          name: date
+          required: false
+          type: string
+        - description: status
+          enum:
+            - available
+            - reserved
+          in: query
+          name: status
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            items:
+              $ref: '#/definitions/Timeslot'
+            type: array
+      tags:
+        - v1
+      description: ''
+      operationId: listTimeslots
+  '/v1/timeslot/{id}/':
+    get:
+      produces:
+        - application/json
+      parameters:
+        - description: A unique integer value identifying this timeslot.
+          in: path
+          name: id
+          required: true
+          type: string
+        - description: dentist
+          in: query
+          name: dentist
+          required: false
+          type: string
+        - description: startTime
+          in: query
+          name: startTime
+          required: false
+          type: string
+        - description: date
+          in: query
+          name: date
+          required: false
+          type: string
+        - description: status
+          enum:
+            - available
+            - reserved
+          in: query
+          name: status
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Timeslot'
+      tags:
+        - v1
+      description: ''
+      operationId: retrieveTimeslot
+    patch:
+      consumes:
+        - application/json
+        - application/x-www-form-urlencoded
+        - multipart/form-data
+      produces:
+        - application/json
+      parameters:
+        - description: A unique integer value identifying this timeslot.
+          in: path
+          name: id
+          required: true
+          type: string
+        - description: dentist
+          in: query
+          name: dentist
+          required: false
+          type: string
+        - description: startTime
+          in: query
+          name: startTime
+          required: false
+          type: string
+        - description: date
+          in: query
+          name: date
+          required: false
+          type: string
+        - description: status
+          enum:
+            - available
+            - reserved
+          in: query
+          name: status
+          required: false
+          type: string
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/Timeslot'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Timeslot'
+      tags:
+        - v1
+      description: ''
+      operationId: partialUpdateTimeslot
+definitions:
+  Timeslot:
+    properties:
+      date:
+        format: date
+        type: string
+      dentist:
+        type: string
+      id:
+        readOnly: true
+        type: integer
+      startTime:
+        type: string
+      status:
+        enum:
+          - available
+          - reserved
+        type: string
+    required:
+      - dentist
+      - startTime
+      - date
+      - status
+    type: object
+x-components: {}
+

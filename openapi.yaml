@@ -1,0 +1,177 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /v1/timeslot/:
+    get:
+      operationId: listTimeslots
+      description: ''
+      parameters:
+      - name: dentist
+        required: false
+        in: query
+        description: dentist
+        schema:
+          type: string
+      - name: startTime
+        required: false
+        in: query
+        description: startTime
+        schema:
+          type: string
+      - name: date
+        required: false
+        in: query
+        description: date
+        schema:
+          type: string
+      - name: status
+        required: false
+        in: query
+        description: status
+        schema:
+          type: string
+          enum:
+          - available
+          - reserved
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Timeslot'
+          description: ''
+      tags:
+      - v1
+  /v1/timeslot/{id}/:
+    get:
+      operationId: retrieveTimeslot
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this timeslot.
+        schema:
+          type: string
+      - name: dentist
+        required: false
+        in: query
+        description: dentist
+        schema:
+          type: string
+      - name: startTime
+        required: false
+        in: query
+        description: startTime
+        schema:
+          type: string
+      - name: date
+        required: false
+        in: query
+        description: date
+        schema:
+          type: string
+      - name: status
+        required: false
+        in: query
+        description: status
+        schema:
+          type: string
+          enum:
+          - available
+          - reserved
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Timeslot'
+          description: ''
+      tags:
+      - v1
+    patch:
+      operationId: partialUpdateTimeslot
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this timeslot.
+        schema:
+          type: string
+      - name: dentist
+        required: false
+        in: query
+        description: dentist
+        schema:
+          type: string
+      - name: startTime
+        required: false
+        in: query
+        description: startTime
+        schema:
+          type: string
+      - name: date
+        required: false
+        in: query
+        description: date
+        schema:
+          type: string
+      - name: status
+        required: false
+        in: query
+        description: status
+        schema:
+          type: string
+          enum:
+          - available
+          - reserved
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Timeslot'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Timeslot'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Timeslot'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Timeslot'
+          description: ''
+      tags:
+      - v1
+components:
+  schemas:
+    Timeslot:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        dentist:
+          type: string
+        startTime:
+          type: string
+        date:
+          type: string
+          format: date
+        status:
+          enum:
+          - available
+          - reserved
+          type: string
+      required:
+      - dentist
+      - startTime
+      - date
+      - status
